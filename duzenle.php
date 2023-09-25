@@ -18,15 +18,19 @@
 
 <body>
 
-    <?php
-    if (isset($_GET['durum'])) {
-        if ($_GET['durum'] == "ok") {
-            echo "";
-        } else {
-            echo "başarısız";
-        }
+<?php
+if (isset($_GET['id'])) {
+    if (isset($_GET['durum']) && $_GET['durum'] == "ok") {
+        echo "";
+    } else {
+        echo "başarısız";
     }
-    ?>
+} else {
+     die('Hatalı');
+}
+?>
+
+
 
     <?php
     $bilgilerimsor = $db->prepare("SELECT * FROM bilgilerim where id=:id");
@@ -34,6 +38,11 @@
         'id' => $_GET['id']
     ));
     $bilgilerimcek = $bilgilerimsor->fetch(PDO::FETCH_ASSOC);
+
+    if(!$bilgilerimcek){
+        die('hatali id');
+    }
+    
     ?>
 
     <h1 class="text-center mb-4">Düzenleme İşlemleri</h1>
@@ -58,10 +67,6 @@
             <button type="submit" class="btn btn-dark" name="updateislemi">Formu Düzenle</button>
         </form>
     </div>
-
-
-
-
 </body>
 
 </html>
