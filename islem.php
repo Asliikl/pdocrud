@@ -9,8 +9,8 @@ if (isset($_POST['insertislem'])) {
         exit;
     }
 
-   if (isset($_POST['yas']) && !is_null($_POST['yas'])) {
-        $yas = $_POST['yas'];    
+   if (isset($_POST['yas'])) {
+        $yas = $_POST['yas']!='' ? $_POST['yas'] : '19';
     } else {
         $yas = '19';
     } 
