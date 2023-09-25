@@ -1,29 +1,46 @@
 <?php
 require_once 'baglan.php';
 
+
 if (isset($_POST['insertislem'])) {
 
+    if (!isset($_POST['ad']) || !isset($_POST['soyad']) || !isset($_POST['mail'])) {
+        header("Location: index.php?hata=yanlis-giris");
+        exit;
+    }
+
+   if (isset($_POST['yas']) && !is_null($_POST['yas'])) {
+        $yas = $_POST['yas'];    
+    } else {
+        $yas = '19';
+    } 
+    
     $kaydet = $db->prepare("INSERT INTO bilgilerim SET 
-    ad=:ad, #sağdaki takma isimdir
-    soyad=:soyad,
-    mail=:mail,
-    yas=:yas
+    ad = :ad,
+    soyad = :soyad,
+    mail = :mail,
+    yas = :yas
     ");
+
     $insert = $kaydet->execute(array(
         'ad' => $_POST['ad'],
         'soyad' => $_POST['soyad'],
         'mail' => $_POST['mail'],
-        'yas' => $_POST['yas']
+        'yas' => $yas
+
     ));
 
     if ($insert) {
-        header("Location:index.php?durum=ok");
+        header("Location: index.php?durum=ok");
         exit;
     } else {
-        header("Location:index.php?durum=no");
+        header("Location: index.php?durum=no");
         exit;
     }
 }
+
+
+ // 'yas' => !is_null(($_POST['yas']))&& ($_POST['yas']) ? $_POST['yas'] : 19
 
 
 if (isset($_POST['updateislemi'])) {

@@ -32,16 +32,16 @@
     <div class="container">
         <form action="islem.php" method="POST">
             <div class="form-group">
-                <input type="text" class="form-control-md" required="" name="ad" placeholder="Adınızı girin">
+                <input type="text" class="form-control-md"  name="ad" placeholder="Adınızı girin">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control-md" required="" name "soyad" placeholder="Soyadınızı girin">
+                <input type="text" class="form-control-md" name="soyad" placeholder="Soyadınızı girin">
             </div>
             <div class="form-group">
-                <input type="email" class="form-control-md" required="" name="mail" placeholder="Emailinizi girin">
+                <input type="email" class="form-control-md"  name="mail" placeholder="Emailinizi girin">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control-md" required="" name="yas" placeholder="Yaşınızı girin">
+                <input type="text" class="form-control-md" name="yas" placeholder="Yaşınızı girin">
             </div>
             <button type="submit" class="btn btn-dark" name="insertislem">Gönder</button>
         </form>

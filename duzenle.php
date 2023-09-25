@@ -30,8 +30,6 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-
-
     <?php
     $bilgilerimsor = $db->prepare("SELECT * FROM bilgilerim where id=:id");
     $bilgilerimsor->execute(array(
