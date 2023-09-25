@@ -27,7 +27,7 @@ if (isset($_POST['insertislem'])) {
         'soyad' => $_POST['soyad'],
         'mail' => $_POST['mail'],
         'yas' => $yas
-
+         // 'yas' => !is_null(($_POST['yas']))&& ($_POST['yas']) ? $_POST['yas'] : 19
     ));
 
     if ($insert) {
@@ -38,10 +38,6 @@ if (isset($_POST['insertislem'])) {
         exit;
     }
 }
-
-
- // 'yas' => !is_null(($_POST['yas']))&& ($_POST['yas']) ? $_POST['yas'] : 19
-
 
 if (isset($_POST['updateislemi'])) {
 

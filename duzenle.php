@@ -18,17 +18,17 @@
 
 <body>
 
-<?php
-if (isset($_GET['id'])) {
-    if (isset($_GET['durum']) && $_GET['durum'] == "ok") {
-        echo "";
+    <?php
+    if (isset($_GET['id'])) {
+        if (isset($_GET['durum']) && $_GET['durum'] == "ok") {
+            echo "";
+        } else {
+            echo "başarısız";
+        }
     } else {
-        echo "başarısız";
+        die('Hatalı');
     }
-} else {
-     die('Hatalı');
-}
-?>
+    ?>
 
     <?php
     $bilgilerimsor = $db->prepare("SELECT * FROM bilgilerim where id=:id");

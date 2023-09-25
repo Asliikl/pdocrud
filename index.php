@@ -17,9 +17,8 @@
 </head>
 
 <body>
-
     <h1 class="text-center">Kayıt İşlemleri</h1>
-
+    
     <?php
     if (isset($_GET['durum'])) {
         if ($_GET['durum'] == "ok") {
