@@ -21,13 +21,14 @@
     <?php
     if (isset($_GET['id'])) {
         if (isset($_GET['durum']) && $_GET['durum'] == "ok") {
-            echo "";
+            echo "başarılı";
         } else {
             echo "başarısız";
         }
     } else {
         die('Hatalı');
     }
+
     ?>
 
     <?php
@@ -40,7 +41,6 @@
     if(!$bilgilerimcek){
         die('hatali id');
     }
-    
     ?>
 
     <h1 class="text-center mb-4">Düzenleme İşlemleri</h1>
@@ -48,16 +48,16 @@
     <div class="container">
         <form action="islem.php" method="POST" class="custom-form">
             <div class="form-group">
-                <input type="text" required="" class="form-control-md" name="ad" value="<?php echo $bilgilerimcek['ad'] ?>">
+                <input type="text"  class="form-control-md" name="ad" value="<?php echo $bilgilerimcek['ad'] ?>">
             </div>
             <div class="form-group">
-                <input type="text" required="" class="form-control-md" name="soyad" value="<?php echo $bilgilerimcek['soyad'] ?>">
+                <input type="text" class="form-control-md" name="soyad" value="<?php echo $bilgilerimcek['soyad'] ?>">
             </div>
             <div class="form-group">
-                <input type="email" required="" class="form-control-md" name="mail" value="<?php echo $bilgilerimcek['mail'] ?>">
+                <input type="email"  class="form-control-md" name="mail" value="<?php echo $bilgilerimcek['mail'] ?>">
             </div>
             <div class="form-group">
-                <input type="text" required="" class="form-control-md" name="yas" value="<?php echo $bilgilerimcek['yas'] ?>">
+                <input type="text"  class="form-control-md" name="yas" value="<?php echo $bilgilerimcek['yas'] ?>">
             </div>
             <div class="form-group">
                 <input type="hidden" name="id" class="form-control-md" value="<?php echo $bilgilerimcek['id'] ?>">

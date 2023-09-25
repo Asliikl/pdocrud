@@ -18,16 +18,17 @@
 
 <body>
     <h1 class="text-center">Kayıt İşlemleri</h1>
-    
+
     <?php
     if (isset($_GET['durum'])) {
         if ($_GET['durum'] == "ok") {
-            echo "başarılı";
+           // echo "başarılı";
         } else {
             echo "başarısız";
         }
     }
     ?>
+
     <div class="container">
         <form action="islem.php" method="POST">
             <div class="form-group">
@@ -61,9 +62,7 @@
     // while($bilgilerimcek=$bilgilerimsor->fetch(PDO::FETCH_ASSOC)){
     //     echo $bilgilerimcek['ad'];
     // }
-
     ?>
-
     <table style="width:60%" class="table table-striped">
         <tr>
             <th>Sıra No</th>
@@ -78,9 +77,11 @@
         <?php
         $bilgilerimsor = $db->prepare("SELECT * FROM bilgilerim");
         $bilgilerimsor->execute();
+       
         $say = 0;
         while ($bilgilerimcek = $bilgilerimsor->fetch(PDO::FETCH_ASSOC)) {
-            $say++ ?>
+            $say++
+             ?>
             <tr>
                 <td><?php echo $say ?></td>
                 <td><?php echo $bilgilerimcek['id'] ?></td>
@@ -91,9 +92,8 @@
                 <td style="text-align:center;"><a href="duzenle.php?id=<?php echo $bilgilerimcek['id']; ?>"><button class="btn btn-success">Düzenle</button></a></td>
                 <td style="text-align:center;"><a href="islem.php?id=<?php echo $bilgilerimcek['id']; ?>&bilgilerimsil=ok"><button class="btn btn-danger">Sil</button></a></td>
             </tr>
-        <?php } ?>
+        <?php }   ?>
     </table>
-
 </body>
 
 </html>

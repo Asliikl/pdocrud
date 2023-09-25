@@ -9,12 +9,12 @@ if (isset($_POST['insertislem'])) {
         exit;
     }
 
-   if (isset($_POST['yas'])) {
-        $yas = $_POST['yas']!='' ? $_POST['yas'] : '19';
+    if (isset($_POST['yas'])) {
+        $yas = $_POST['yas'] != '' ? $_POST['yas'] : '19';
     } else {
         $yas = '19';
-    } 
-    
+    }
+
     $kaydet = $db->prepare("INSERT INTO bilgilerim SET 
     ad = :ad,
     soyad = :soyad,
@@ -27,7 +27,7 @@ if (isset($_POST['insertislem'])) {
         'soyad' => $_POST['soyad'],
         'mail' => $_POST['mail'],
         'yas' => $yas
-         // 'yas' => !is_null(($_POST['yas']))&& ($_POST['yas']) ? $_POST['yas'] : 19
+        // 'yas' => !is_null(($_POST['yas']))&& ($_POST['yas']) ? $_POST['yas'] : 19
     ));
 
     if ($insert) {
@@ -43,6 +43,17 @@ if (isset($_POST['updateislemi'])) {
 
     $id = $_POST['id'];
 
+    if (!isset($_POST['id']) || !isset($_POST['ad']) || !isset($_POST['soyad']) || !isset($_POST['mail'])) {
+        header("Location: duzenle.php?hata=gecersiz-id");
+        exit;
+    }
+
+    if (isset($_POST['yas'])) {
+        $yas = $_POST['yas'] != '' ? $_POST['yas'] : '0';
+    } else {
+        $yas = '0';
+    }
+
     $kaydet = $db->prepare("UPDATE bilgilerim SET 
     ad=:ad,
     soyad=:soyad,
@@ -54,8 +65,8 @@ if (isset($_POST['updateislemi'])) {
         'ad' => $_POST['ad'],
         'soyad' => $_POST['soyad'],
         'mail' => $_POST['mail'],
-        'yas' => $_POST['yas'],
-        'id' => $_POST['id']
+        'yas' => $yas,
+        'id' => $id
     ));
 
     if ($insert) {
