@@ -1,0 +1,34 @@
+h1 {
+    font-family: 'Playfair Display', serif;
+}
+form {
+    margin: 0 auto;
+    /* Formu yatayda ortala */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background-color: #4F709C;
+    width: 400px;
+    border-radius: 5px;
+}
+
+.custom-form {
+    background-color: #F3FDE8;
+    margin-top: 100px;
+}
+
+input {
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+table {
+    margin: 0 auto;
+}

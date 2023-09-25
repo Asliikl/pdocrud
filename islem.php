@@ -1,9 +1,9 @@
 <?php
 require_once 'baglan.php';
 
-if(isset($_POST['insertislem'])){
+if (isset($_POST['insertislem'])) {
 
-    $kaydet=$db->prepare("INSERT INTO bilgilerim SET 
+    $kaydet = $db->prepare("INSERT INTO bilgilerim SET 
     ad=:ad, #sağdaki takma isimdir
     soyad=:soyad,
     mail=:mail,
@@ -16,22 +16,21 @@ if(isset($_POST['insertislem'])){
         'yas' => $_POST['yas']
     ));
 
-    if($insert){
+    if ($insert) {
         header("Location:index.php?durum=ok");
         exit;
-    }
-    else{
+    } else {
         header("Location:index.php?durum=no");
         exit;
     }
 }
 
 
-if(isset($_POST['updateislemi'])){
+if (isset($_POST['updateislemi'])) {
 
-    $id=$_POST['id'];
-    
-    $kaydet=$db->prepare("UPDATE bilgilerim SET 
+    $id = $_POST['id'];
+
+    $kaydet = $db->prepare("UPDATE bilgilerim SET 
     ad=:ad,
     soyad=:soyad,
     mail=:mail,
@@ -46,30 +45,26 @@ if(isset($_POST['updateislemi'])){
         'id' => $_POST['id']
     ));
 
-    if($insert){
-        header("Location:duzenle.php?durum=ok&id=$id");
+    if ($insert) {
+        header("Location:index.php?durum=ok&id=$id");
         exit;
-    }
-    else{
+    } else {
         header("Location:duzenle.php?durum=no&id=$id");
         exit;
     }
 }
 
-if($_GET['bilgilerimsil']=="ok"){
-    $sil=$db->prepare("DELETE from bilgilerim where id=:id");
-    $kontrol=$sil->execute(array(
-        'id'=>$_GET['id']
+if ($_GET['bilgilerimsil'] == "ok") {
+    $sil = $db->prepare("DELETE from bilgilerim where id=:id");
+    $kontrol = $sil->execute(array(
+        'id' => $_GET['id']
     ));
-    
-    if($kontrol){
+
+    if ($kontrol) {
         header("Location:index.php?durum=ok");
         exit;
-    }
-    else{
+    } else {
         header("Location:index.php?durum=no");
         exit;
     }
 }
-
-?>
